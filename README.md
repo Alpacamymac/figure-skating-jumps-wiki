@@ -2,8 +2,8 @@
 
 > **專案目標**：以 LLM Wiki 作為唯一定案知識來源（Single Source of Truth），製作兼具手繪插畫美學與互動教學功能的單檔 HTML 簡報，專為花式滑冰零基礎新手設計，並透過 GitHub Pages 公開發布。
 
-- 🌐 **線上簡報展示網址**：[https://alpacamymac.github.io/figure-skating-jumps-wiki/](https://alpacamymac.github.io/figure-skating-jumps-wiki/)
-- 📦 **GitHub 專案倉庫**：[https://github.com/Alpacamymac/figure-skating-jumps-wiki](https://github.com/Alpacamymac/figure-skating-jumps-wiki)
+- **線上簡報展示網址**：[https://alpacamymac.github.io/figure-skating-jumps-wiki/](https://alpacamymac.github.io/figure-skating-jumps-wiki/)
+- **GitHub 專案倉庫**：[https://github.com/Alpacamymac/figure-skating-jumps-wiki](https://github.com/Alpacamymac/figure-skating-jumps-wiki)
 
 ---
 
