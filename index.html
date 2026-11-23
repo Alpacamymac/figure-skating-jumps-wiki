@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>花式滑冰六大跳躍動作入門指南 - 教學型互動簡報</title>
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f8fafc 100%);
+      --ice-primary: #0284c7;
+      --ice-dark: #0369a1;
+      --ice-light: #e0f2fe;
+      --ice-accent: #38bdf8;
+      --navy: #0f172a;
+      --slate: #334155;
+      --slate-light: #64748b;
+      --card-bg: rgba(255, 255, 255, 0.94);
+      --card-border: #bae6fd;
+      --shadow-soft: 0 12px 36px -8px rgba(2, 132, 199, 0.12), 0 4px 12px -2px rgba(15, 23, 42, 0.05);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+      --badge-yellow: #fef08a;
+      --badge-yellow-txt: #854d0e;
+      --badge-green: #bbf7d0;
+      --badge-green-txt: #166534;
+      --badge-blue: #bfdbfe;
+      --badge-blue-txt: #1e40af;
+      --badge-pink: #fbcfe8;
+      --badge-pink-txt: #9d174d;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      background: var(--bg-gradient);
+      color: var(--navy);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Top Progress Bar */
+    .progress-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: rgba(224, 242, 254, 0.8);
+      z-index: 100;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 8.33%;
+      background: linear-gradient(90deg, #38bdf8, #0284c7);
+      transition: width 0.35s ease;
+      border-radius: 0 3px 3px 0;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+    }
+
+    /* Header Nav Bar */
+    .top-nav {
+      position: fixed;
+      top: 6px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 24px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 90;
+      border-bottom: 1px solid rgba(186, 230, 253, 0.6);
+    }
+    .nav-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ice-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-title span.badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--ice-light);
+      color: var(--ice-primary);
+      padding: 2px 8px;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+    }
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .page-counter {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--slate);
+      background: #f1f5f9;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* Main Slide Deck */
+    main.deck-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 70px 20px 80px;
+      position: relative;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--card-border);
+      box-shadow: var(--shadow-soft);
+      padding: 36px 40px;
+      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .slide.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.99);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Typography & Sketch accents */
+    .slide-header {
+      margin-bottom: 24px;
+      border-bottom: 2px dashed #e2e8f0;
+      padding-bottom: 16px;
+    }
+    .slide-eyebrow {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ice-primary);
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+    .slide-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .slide-subtitle {
+      font-size: 1.05rem;
+      color: var(--slate-light);
+      margin-top: 4px;
+    }
+
+    /* Two-column layout */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .slide {
+        padding: 24px 20px;
+      }
+    }
+
+    /* Video Player Card */
+    .video-card {
+      background: #0f172a;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.25);
+      border: 2px solid #334155;
+      display: flex;
+      flex-direction: column;
+    }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      background: #000;
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-wrapper video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .video-controls-bar {
+      background: #1e293b;
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .video-btn {
+      background: #334155;
+      color: #f8fafc;
+      border: 1px solid #475569;
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .video-btn:hover {
+      background: var(--ice-primary);
+      border-color: var(--ice-accent);
+    }
+    .video-btn.active {
+      background: #0284c7;
+      color: white;
+    }
+    .video-tag {
+      font-size: 0.78rem;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    /* Cards & Info Boxes */
+    .card-sketch {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      margin-bottom: 16px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .card-sketch:hover {
+      border-color: #38bdf8;
+      transform: translateY(-2px);
+    }
+    .card-sketch h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ice-dark);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 14px;
+    }
+    .pill {
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .pill-blue { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+    .pill-green { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+    .pill-yellow { background: #fef9c3; color: #a16207; border: 1px solid #fef08a; }
+    .pill-purple { background: #f3e8ff; color: #6b21a8; border: 1px solid #e9d5ff; }
+    .pill-orange { background: #ffedd5; color: #c2410c; border: 1px solid #fed7aa; }
+
+    /* SVG Illustration Container */
+    .svg-illustration {
+      width: 100%;
+      background: #f8fafc;
+      border-radius: var(--radius-md);
+      border: 1.5px dashed #cbd5e1;
+      padding: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 12px 0;
+    }
+    .svg-illustration svg {
+      width: 100%;
+      max-height: 220px;
+      display: block;
+    }
+
+    /* Decision Tree Grid */
+    .tree-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+    @media (max-width: 800px) {
+      .tree-grid { grid-template-columns: 1fr; }
+    }
+    .tree-step {
+      background: #ffffff;
+      border: 2px solid #bae6fd;
+      border-radius: var(--radius-md);
+      padding: 20px 18px;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.06);
+      position: relative;
+    }
+    .tree-step-num {
+      position: absolute;
+      top: -12px;
+      left: 18px;
+      background: var(--ice-primary);
+      color: white;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 2px 10px;
+      border-radius: 12px;
+    }
+    .tree-step h4 {
+      margin-top: 4px;
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    /* Quiz Component */
+    .quiz-card {
+      background: #ffffff;
+      border: 2px solid #bae6fd;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 16px rgba(2, 132, 199, 0.08);
+    }
+    .quiz-q-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--navy);
+      display: flex;
+      gap: 8px;
+    }
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 650px) {
+      .quiz-options { grid-template-columns: 1fr; }
+    }
+    .quiz-opt-btn {
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--slate);
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+    }
+    .quiz-opt-btn:hover {
+      background: #e0f2fe;
+      border-color: #38bdf8;
+      color: #0369a1;
+    }
+    .quiz-opt-btn.correct {
+      background: #dcfce7 !important;
+      border-color: #22c55e !important;
+      color: #15803d !important;
+    }
+    .quiz-opt-btn.wrong {
+      background: #fee2e2 !important;
+      border-color: #ef4444 !important;
+      color: #b91c1c !important;
+    }
+    .quiz-feedback {
+      display: none;
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    .quiz-feedback.show {
+      display: block;
+    }
+    .quiz-feedback.correct-box {
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      color: #166534;
+    }
+    .quiz-feedback.wrong-box {
+      background: #fef2f2;
+      border: 1px solid #fca5a5;
+      color: #991b1b;
+    }
+
+    /* Fixed Bottom Nav Bar */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(186, 230, 253, 0.6);
+      z-index: 90;
+    }
+    .nav-btn {
+      background: var(--ice-primary);
+      color: white;
+      border: none;
+      padding: 10px 22px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 30px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+    }
+    .nav-btn:hover {
+      background: var(--ice-dark);
+      transform: translateY(-1px);
+    }
+    .nav-btn:disabled {
+      background: #cbd5e1;
+      color: #94a3b8;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+    .nav-btn-secondary {
+      background: #f1f5f9;
+      color: var(--slate);
+      box-shadow: none;
+      border: 1px solid #cbd5e1;
+    }
+    .nav-btn-secondary:hover {
+      background: #e2e8f0;
+      color: var(--navy);
+    }
+    .keyboard-hint {
+      font-size: 0.78rem;
+      color: var(--slate-light);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .key-badge {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-weight: 700;
+      color: #475569;
+    }
+
+    /* Verification Badge */
+    .verify-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff7ed;
+      border: 1px solid #fdba74;
+      color: #9a3412;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    /* Cover Styling */
+    .cover-container {
+      text-align: center;
+      padding: 20px 10px 30px;
+    }
+    .cover-badge {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      color: #0369a1;
+      padding: 6px 18px;
+      border-radius: 30px;
+      border: 1px solid #7dd3fc;
+      margin-bottom: 20px;
+    }
+    .cover-title {
+      font-size: 2.75rem;
+      font-weight: 900;
+      color: #0c4a6e;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+    .cover-subtitle {
+      font-size: 1.25rem;
+      color: #475569;
+      max-width: 680px;
+      margin: 0 auto 28px;
+    }
+    .cover-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 960px;
+      margin: 20px auto 30px;
+      text-align: left;
+    }
+    @media (max-width: 768px) {
+      .cover-title { font-size: 2rem; }
+      .cover-grid { grid-template-columns: 1fr; }
+    }
+    .cover-card {
+      background: #ffffff;
+      border: 2px solid #e0f2fe;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.05);
+    }
+    .cover-card-icon {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+    .cover-card h3 {
+      font-size: 1.1rem;
+      color: var(--ice-dark);
+      margin-bottom: 6px;
+    }
+    .cover-card p {
+      font-size: 0.9rem;
+      color: var(--slate);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Progress Bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- Top Nav Bar -->
+  <header class="top-nav">
+    <div class="nav-title">
+      ⛸️ <span>花式滑冰六大跳躍指南</span>
+      <span class="badge">新手視覺手冊</span>
+    </div>
+    <div class="nav-controls">
+      <span class="page-counter" id="pageCounter">Slide 1 / 12</span>
+    </div>
+  </header>
+
+  <!-- Slide Deck Main -->
+  <main class="deck-container">
+
+    <!-- ==================== SLIDE 1: 封面頁 ==================== -->
+    <section class="slide active" id="slide-1">
+      <div class="cover-container">
+        <div class="cover-badge">奧運賽事轉播・花式滑冰入門必備</div>
+        <h1 class="cover-title">花式滑冰六大跳躍動作入門指南</h1>
+        <p class="cover-subtitle">從冰刀構造到 30 秒肉眼判別法，完全零基礎也能輕鬆看懂世界級選手的起跳瞬間！</p>
+
+        <!-- 手繪風冰鞋與跳躍裝飾 SVG -->
+        <div class="svg-illustration" style="max-width: 580px; margin: 0 auto 24px; background: transparent; border: none;">
+          <svg viewBox="0 0 500 130" xmlns="http://www.w3.org/2000/svg">
+            <!-- 冰面弧線 -->
+            <path d="M 20 100 Q 150 70 250 95 T 480 85" fill="none" stroke="#7dd3fc" stroke-width="3" stroke-dasharray="6,4"/>
+            <!-- 冰鞋輪廓 -->
+            <path d="M 120 70 L 140 70 Q 155 70 160 55 L 175 25 Q 180 18 190 20 L 205 25 L 200 45 Q 195 65 210 70 L 235 70 Q 245 70 245 80 L 120 80 Z" fill="#ffffff" stroke="#0284c7" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M 175 30 L 195 35" stroke="#94a3b8" stroke-width="1.5"/>
+            <path d="M 172 40 L 192 45" stroke="#94a3b8" stroke-width="1.5"/>
+            <path d="M 168 50 L 188 55" stroke="#94a3b8" stroke-width="1.5"/>
+            <!-- 冰刀支架與鋼刃 -->
+            <rect x="135" y="80" width="10" height="12" fill="#64748b"/>
+            <rect x="220" y="80" width="10" height="12" fill="#64748b"/>
+            <path d="M 105 92 L 255 92 Q 265 92 268 85 L 265 80" fill="none" stroke="#334155" stroke-width="4" stroke-linecap="round"/>
+            <!-- 刀齒 -->
+            <path d="M 105 92 L 100 95 L 104 90 L 98 92 L 103 86" fill="none" stroke="#334155" stroke-width="2.5"/>
+            <!-- 空中旋轉軌跡 -->
+            <path d="M 270 70 Q 320 20 370 50 T 450 70" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- 冰晶星芒 -->
+            <g transform="translate(330, 25)">
+              <line x1="-8" y1="0" x2="8" y2="0" stroke="#0284c7" stroke-width="2"/>
+              <line x1="0" y1="-8" x2="0" y2="8" stroke="#0284c7" stroke-width="2"/>
+              <line x1="-5" y1="-5" x2="5" y2="5" stroke="#38bdf8" stroke-width="1.5"/>
+              <line x1="-5" y1="5" x2="5" y2="-5" stroke="#38bdf8" stroke-width="1.5"/>
+            </g>
+            <text x="350" y="32" fill="#0369a1" font-size="13" font-weight="700">空中旋轉體</text>
+            <text x="75" y="118" fill="#64748b" font-size="11" font-weight="600">刀齒 (Toe Pick)</text>
+            <text x="200" y="118" fill="#64748b" font-size="11" font-weight="600">雙刃 (Inside / Outside)</text>
+          </svg>
+        </div>
+
+        <div class="cover-grid">
+          <div class="cover-card">
+            <div class="cover-card-icon">⚡</div>
+            <h3>30 秒視覺決策樹</h3>
+            <p>記住「點冰/刀刃 → 前向/倒向 → 內刃/外刃」三道問題，瞬間鎖定跳躍名稱。</p>
+          </div>
+          <div class="cover-card">
+            <div class="cover-card-icon">🔍</div>
+            <h3>六大跳躍精選慢動作</h3>
+            <p>搭配世界冠軍示範動圖與 0.5x 慢速播放，清晰看透每一式起跳腳與落冰刃。</p>
+          </div>
+          <div class="cover-card">
+            <div class="cover-card-icon">🏆</div>
+            <h3>看懂裁判小分表</h3>
+            <p>解密 1A～4A 周數計算、ISU 基礎分、GOE 加扣分與常見爭議符號（q, &lt;, e, !）。</p>
+          </div>
+        </div>
+
+        <div style="font-size: 0.88rem; color: #64748b;">
+          💡 點擊下方按鈕或使用鍵盤左右方向鍵（<code>←</code> <code>→</code>）開始探索！
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 2: 先懂 3 個關鍵詞 ==================== -->
+    <section class="slide" id="slide-2">
+      <div class="slide-header">
+        <span class="slide-eyebrow">基礎物理幾何</span>
+        <h2 class="slide-title">先懂 3 個關鍵詞：刀齒、內外刃、正滑與倒滑</h2>
+        <p class="slide-subtitle">花式滑冰的所有奧妙，都藏在這把弧形冰刀與人體重心的相對幾何關係中。</p>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <div class="card-sketch">
+            <h4>1. 刀齒（Toe Pick）── 撐竿跳式的助推器</h4>
+            <p style="font-size: 0.92rem; color: var(--slate);">
+              位於冰刀最前端的鋸齒。在「點冰跳」中，浮足（未承重腳）會迅速將刀齒扎進冰面，就像撐竿跳選手插竿一樣，把向後的滑行水平動能轉換為驚人的垂直騰空高度。
+            </p>
+          </div>
+
+          <div class="card-sketch">
+            <h4>2. 雙刃構造（Inside & Outside Edge）</h4>
+            <p style="font-size: 0.92rem; color: var(--slate);">
+              冰刀底部不是平的，而是中凹的圓弧凹槽（Hollow），磨出兩道平行的刀刃：
+            </p>
+            <ul style="font-size: 0.88rem; color: var(--slate); margin-left: 20px; margin-top: 6px;">
+              <li><strong>內刃（Inside Edge）</strong>：靠近大拇趾側（身體內側）。起跳時腳踝內扣。</li>
+              <li><strong>外刃（Outside Edge）</strong>：靠近小腳趾側（身體外側）。起跳時重心向外側深傾。</li>
+            </ul>
+          </div>
+
+          <div class="card-sketch">
+            <h4>3. 正滑 vs. 倒滑（Forward vs. Backward）</h4>
+            <p style="font-size: 0.92rem; color: var(--slate);">
+              所有跳躍在空中旋轉後，<strong>落冰時一律背對前進方向倒滑</strong>。而六種跳躍中，只有 <strong>Axel 是唯一向前滑行起跳</strong>的，其餘五種皆為倒滑起跳！
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <!-- 手繪插畫 SVG：冰刀截面與內外刃切冰示意 -->
+          <div class="svg-illustration" style="padding: 20px;">
+            <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+              <!-- 標題 -->
+              <text x="210" y="24" text-anchor="middle" font-size="14" font-weight="700" fill="#0369a1">冰刀底面凹槽 (Hollow) 與雙刃剖面</text>
+              
+              <!-- 冰鞋下刀管 -->
+              <rect x="180" y="45" width="60" height="40" rx="4" fill="#64748b"/>
+              
+              <!-- 放大冰刀截面 -->
+              <path d="M 160 85 L 260 85 L 255 160 Q 210 135 165 160 Z" fill="#94a3b8" stroke="#334155" stroke-width="3"/>
+              
+              <!-- 內凹 Hollow 弧線 -->
+              <path d="M 165 160 Q 210 135 255 160" fill="none" stroke="#0284c7" stroke-width="4"/>
+              
+              <!-- 刃標示點 -->
+              <circle cx="165" cy="160" r="5" fill="#ef4444"/>
+              <text x="110" y="175" font-size="13" font-weight="700" fill="#b91c1c">內刃 (Inside)</text>
+              <text x="110" y="193" font-size="11" fill="#64748b">朝向身體內側</text>
+
+              <circle cx="255" cy="160" r="5" fill="#0284c7"/>
+              <text x="270" y="175" font-size="13" font-weight="700" fill="#0369a1">外刃 (Outside)</text>
+              <text x="270" y="193" font-size="11" fill="#64748b">朝向身體外側</text>
+
+              <!-- 中間凹槽標註 -->
+              <path d="M 210 110 L 210 138" stroke="#0284c7" stroke-width="2" stroke-dasharray="3,3"/>
+              <text x="210" y="105" text-anchor="middle" font-size="11" font-weight="600" fill="#0284c7">凹槽 (Hollow)</text>
+
+              <!-- 冰面與壓刃傾斜示範 -->
+              <line x1="30" y1="260" x2="390" y2="260" stroke="#7dd3fc" stroke-width="4"/>
+              <text x="40" y="250" font-size="12" font-weight="700" fill="#0284c7">冰面 (Ice Level)</text>
+
+              <!-- 傾斜切入冰面示意 -->
+              <g transform="translate(190, 240) rotate(-22)">
+                <rect x="-15" y="-50" width="30" height="50" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
+                <path d="M -15 0 Q 0 -8 15 0" fill="none" stroke="#0284c7" stroke-width="3"/>
+                <circle cx="-15" cy="0" r="4" fill="#0284c7"/>
+              </g>
+              <text x="240" y="275" font-size="12" font-weight="600" fill="#0f172a">壓外刃 (Outside Lean)：向外傾斜切冰</text>
+            </svg>
+          </div>
+          <div style="background: #f8fafc; border-left: 4px solid var(--ice-primary); padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 0.85rem; color: var(--slate);">
+            <strong>🌟 新手觀念：</strong>選手在冰面上永遠只會壓在一側的刀刃上滑行。如果冰刀完全平貼冰面（Flat），就無法借由側向摩擦力刻出推進圓弧，會被裁判視為刃度深度不足。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 3: 30 秒看懂「三步驟判別法」 ==================== -->
+    <section class="slide" id="slide-3">
+      <div class="slide-header">
+        <span class="slide-eyebrow">視覺決策樹</span>
+        <h2 class="slide-title">30 秒看懂跳躍：新手專用三步驟判別法</h2>
+        <p class="slide-subtitle">不需要看清選手幾百轉的空中姿勢，只要依照這三道題目，就能精準鎖定跳躍種類！</p>
+      </div>
+
+      <div class="tree-grid">
+        <div class="tree-step">
+          <div class="tree-step-num">Step 1</div>
+          <h4>① 有沒有用腳尖點冰？</h4>
+          <p style="font-size: 0.88rem; color: var(--slate); margin-bottom: 12px;">
+            看起跳前一瞬間，另一隻腳（浮足）有沒有向後伸出並用刀齒敲擊冰面借力。
+          </p>
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 10px; border-radius: 8px; margin-bottom: 8px;">
+            <strong style="color: #166534; font-size: 0.88rem;">👉 有點冰（點冰跳 Toe Jumps）</strong>
+            <p style="font-size: 0.82rem; color: #14532d; margin-top: 4px;">剩下 3 種可能：<strong>Toe Loop (T)、Flip (F)、Lutz (Lz)</strong></p>
+          </div>
+          <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 10px; border-radius: 8px;">
+            <strong style="color: #1e40af; font-size: 0.88rem;">👉 不點冰（刀刃跳 Edge Jumps）</strong>
+            <p style="font-size: 0.82rem; color: #1e3a8a; margin-top: 4px;">剩下 3 種可能：<strong>Salchow (S)、Loop (Lo)、Axel (A)</strong></p>
+          </div>
+        </div>
+
+        <div class="tree-step">
+          <div class="tree-step-num">Step 2</div>
+          <h4>② 面向哪裡起跳？</h4>
+          <p style="font-size: 0.88rem; color: var(--slate); margin-bottom: 12px;">
+            看選手起跳離冰那一瞬間，身體面部是朝向前方還是背對前進方向？
+          </p>
+          <div style="background: #fdf2f8; border: 1px solid #fbcfe8; padding: 10px; border-radius: 8px; margin-bottom: 8px;">
+            <strong style="color: #9d174d; font-size: 0.88rem;">👑 面向前方起跳（唯一例外）</strong>
+            <p style="font-size: 0.82rem; color: #831843; margin-top: 4px;">
+              <strong>100% 是 Axel（阿克塞爾跳）！</strong> 它是唯一的正滑起跳，天生多轉半圈，最容易辨認。
+            </p>
+          </div>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 10px; border-radius: 8px;">
+            <strong style="color: #334155; font-size: 0.88rem;">👉 背對前方（倒滑進入）</strong>
+            <p style="font-size: 0.82rem; color: #475569; margin-top: 4px;">其餘五種跳躍（T, S, Lo, F, Lz）全都是倒著滑進去起跳。</p>
+          </div>
+        </div>
+
+        <div class="tree-step">
+          <div class="tree-step-num">Step 3</div>
+          <h4>③ 滑行腳壓內刃還是外刃？</h4>
+          <p style="font-size: 0.88rem; color: var(--slate); margin-bottom: 12px;">
+            看起跳腳踝與冰刀傾斜角度，這也是區分 Flip / Lutz 與 Salchow / Loop 的核心關鍵。
+          </p>
+          <div style="background: #fffbeb; border: 1px solid #fef08a; padding: 10px; border-radius: 8px; margin-bottom: 8px;">
+            <strong style="color: #854d0e; font-size: 0.85rem;">壓後外刃 (Outside)</strong>
+            <p style="font-size: 0.8rem; color: #713f12; margin-top: 2px;">
+              點冰跳：<strong>Toe Loop (T)</strong>（右外）、<strong>Lutz (Lz)</strong>（左外反向）<br>
+              刀刃跳：<strong>Loop (Lo)</strong>（右外原腳起落）
+            </p>
+          </div>
+          <div style="background: #f5f3ff; border: 1px solid #ddd6fe; padding: 10px; border-radius: 8px;">
+            <strong style="color: #5b21b6; font-size: 0.85rem;">壓後內刃 (Inside)</strong>
+            <p style="font-size: 0.8rem; color: #4c1d95; margin-top: 2px;">
+              點冰跳：<strong>Flip (F)</strong>（左內點冰，順向轉三進入）<br>
+              刀刃跳：<strong>Salchow (S)</strong>（左內起跳，雙腳內八掃腿）
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 20px; text-align: center; background: #ffffff; border: 2px dashed #bae6fd; border-radius: var(--radius-md); padding: 14px;">
+        <span style="font-weight: 800; color: var(--ice-dark); font-size: 0.95rem;">🎯 記住一句話口訣：</span>
+        <span style="color: var(--slate); font-size: 0.92rem; margin-left: 8px;">「前滑必是阿克塞，無點看八或交叉，有點看刃定菲魯！」</span>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 4: 兩大陣營對決 ==================== -->
+    <section class="slide" id="slide-4">
+      <div class="slide-header">
+        <span class="slide-eyebrow">跳躍陣營剖析</span>
+        <h2 class="slide-title">兩大陣營對決：點冰跳（Toe） vs. 刀刃跳（Edge）</h2>
+        <p class="slide-subtitle">六種跳躍恰好平分為兩組，起跳時的力學原理與肌肉發力路徑截然不同。</p>
+      </div>
+
+      <div class="two-col">
+        <!-- 點冰跳卡片 -->
+        <div class="card-sketch" style="border: 2px solid #bbf7d0; background: #f0fdf4;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <h3 style="color: #166534; font-size: 1.3rem;">⛏️ 點冰跳（Toe Jumps）</h3>
+            <span class="pill pill-green">爆發型・撐竿跳</span>
+          </div>
+          <p style="font-size: 0.92rem; color: #14532d; margin-bottom: 14px;">
+            起跳前，浮足向後點入冰面作為支點，具有極為明顯的敲擊聲與蹬冰制動瞬間。
+          </p>
+
+          <div style="background: white; border-radius: 12px; padding: 14px; margin-bottom: 12px; border: 1px solid #dcfce7;">
+            <strong style="color: #15803d; font-size: 0.95rem;">成員名單（難度由低到高）：</strong>
+            <ul style="font-size: 0.88rem; color: var(--slate); margin-left: 20px; margin-top: 6px; line-height: 1.8;">
+              <li><strong>Toe Loop（後外點冰跳，T）</strong>：最簡單，常作為連跳第二跳。</li>
+              <li><strong>Flip（後內點冰跳，F）</strong>：轉三步進入，壓內刃，順向發力。</li>
+              <li><strong>Lutz（勾手跳，Lz）</strong>：反 S 弧線長外刃滑行，反向扭矩，難度極高。</li>
+            </ul>
+          </div>
+
+          <div style="font-size: 0.85rem; color: #166534;">
+            <strong>視覺特徵：</strong>空中拋物線較為高聳陡峭，騰空高度大，起跳瞬間能看到清晰的單腳點冰與冰花濺起。
+          </div>
+        </div>
+
+        <!-- 刀刃跳卡片 -->
+        <div class="card-sketch" style="border: 2px solid #bfdbfe; background: #eff6ff;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <h3 style="color: #1e40af; font-size: 1.3rem;">🌊 刀刃跳（Edge Jumps）</h3>
+            <span class="pill pill-blue">飄逸型・膝部彈簧</span>
+          </div>
+          <p style="font-size: 0.92rem; color: #1e3a8a; margin-bottom: 14px;">
+            不使用刀齒點冰，純靠滑行腳深蹲膝關節、下壓冰刀刃部的向心力與回彈躍起。
+          </p>
+
+          <div style="background: white; border-radius: 12px; padding: 14px; margin-bottom: 12px; border: 1px solid #dbeafe;">
+            <strong style="color: #1d4ed8; font-size: 0.95rem;">成員名單（難度由低到高）：</strong>
+            <ul style="font-size: 0.88rem; color: var(--slate); margin-left: 20px; margin-top: 6px; line-height: 1.8;">
+              <li><strong>Salchow（後內結環跳，S）</strong>：雙腳內八字，靠右腿大弧度掃腿帶起。</li>
+              <li><strong>Loop（後外結環跳，Lo）</strong>：雙腳交叉緊鎖，原腳起跳原腳落冰。</li>
+              <li><strong>Axel（阿克塞爾跳，A）</strong>：唯一的正滑向前起跳，多轉半圈，跳躍之王。</li>
+            </ul>
+          </div>
+
+          <div style="font-size: 0.85rem; color: #1e40af;">
+            <strong>視覺特徵：</strong>拋物線較長、滯空速度平滑，起跳如行雲流水，沒有突兀的點冰制動頓挫感。
+          </div>
+        </div>
+      </div>
+
+      <!-- SVG 示意圖：點冰助推 vs 刀刃蓄力彈起 -->
+      <div class="svg-illustration" style="margin-top: 10px;">
+        <svg viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
+          <line x1="30" y1="95" x2="570" y2="95" stroke="#94a3b8" stroke-width="2"/>
+          
+          <!-- 左邊：點冰跳 -->
+          <g transform="translate(130, 0)">
+            <text x="0" y="24" text-anchor="middle" font-size="13" font-weight="700" fill="#15803d">點冰跳力學：支點槓桿撬起</text>
+            <!-- 滑行腳 -->
+            <rect x="-35" y="70" width="30" height="20" rx="3" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+            <line x1="-40" y1="93" x2="0" y2="93" stroke="#334155" stroke-width="3"/>
+            <!-- 點冰腳 -->
+            <g transform="translate(25, 60) rotate(35)">
+              <rect x="-10" y="-15" width="20" height="30" rx="3" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+              <path d="M 0 15 L -4 26 L 4 22 Z" fill="#16a34a"/>
+            </g>
+            <!-- 冰花 -->
+            <circle cx="36" cy="94" r="3" fill="#86efac"/>
+            <circle cx="42" cy="90" r="2" fill="#86efac"/>
+            <!-- 向上箭頭 -->
+            <path d="M 0 55 Q 15 25 35 20" fill="none" stroke="#22c55e" stroke-width="3" marker-end="url(#arrow)"/>
+          </g>
+
+          <!-- 右邊：刀刃跳 -->
+          <g transform="translate(430, 0)">
+            <text x="0" y="24" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">刀刃跳力學：深蹲回彈爆發</text>
+            <!-- 深蹲滑行刀 -->
+            <rect x="-15" y="65" width="30" height="25" rx="3" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+            <line x1="-25" y1="93" x2="25" y2="93" stroke="#0284c7" stroke-width="4"/>
+            <!-- 彈簧曲線與向心力 -->
+            <path d="M 0 65 Q 10 50 -5 40 T 15 25" fill="none" stroke="#38bdf8" stroke-width="3"/>
+            <text x="40" y="60" font-size="11" font-weight="600" fill="#0369a1">深壓刃＋膝彈性</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 5: TOE LOOP ==================== -->
+    <section class="slide" id="slide-5">
+      <div class="slide-header">
+        <span class="slide-eyebrow">跳躍精講 1 / 6・點冰跳</span>
+        <h2 class="slide-title">後外點冰跳 Toe Loop (T)</h2>
+        <p class="slide-subtitle">最易上手的入門跳躍，世界頂尖賽場上最受青睞的「連跳百搭神器」。</p>
+      </div>
+
+      <div class="two-col">
+        <!-- 影片播放器卡片 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <video id="video-toe-loop" autoplay loop muted playsinline src="videos/toe-loop.mp4"></video>
+          </div>
+          <div class="video-controls-bar">
+            <button class="video-btn" onclick="togglePlay('video-toe-loop', this)">⏸️ 暫停</button>
+            <button class="video-btn" onclick="toggleSlow('video-toe-loop', this)">🐢 0.5x 慢速</button>
+            <span class="video-tag">示範：羽生結弦 4T</span>
+          </div>
+        </div>
+
+        <!-- 解說卡片 -->
+        <div>
+          <div class="info-pill-group">
+            <span class="pill pill-green">難度：★☆☆☆</span>
+            <span class="pill pill-blue">縮寫：T</span>
+            <span class="pill pill-yellow">發明者：Bruce Mapes (1920s)</span>
+          </div>
+
+          <div class="card-sketch">
+            <h4>⛸️ 起跳與落冰機制（逆時針）</h4>
+            <p style="font-size: 0.92rem; color: var(--slate); line-height: 1.7;">
+              • <strong>起跳足與刃</strong>：<strong>右腳後外刃（RBO）</strong>滑行。<br>
+              • <strong>點冰足</strong>：<strong>左腳刀齒（Left Toe Pick）</strong>敲冰借力。<br>
+              • <strong>落冰足與刃</strong>：<strong>右腳後外刃（RBO）</strong>。
+            </p>
+          </div>
+
+          <div class="card-sketch">
+            <h4>💡 為什麼是六大跳中最簡單的？</h4>
+            <p style="font-size: 0.9rem; color: var(--slate); line-height: 1.6;">
+              在點冰起跳時，選手的骨盆與腰胯方向已經預先順應了即將旋轉的方向，力量傳遞毫無阻礙。因為穩定性極高，在自由滑比賽中，幾乎所有選手都會將 3T 或 4T 掛在第一個高難度跳躍後組成連跳（如 4T+3T、3Lz+3T）。
+            </p>
+          </div>
+
+          <div style="background: #f8fafc; border-left: 4px solid #0284c7; padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 0.85rem; color: #334155;">
+            <strong>👀 肉眼抓取技巧：</strong>看選手右腳倒滑，左腳往後一扎，隨後直接騰空轉體，就是 Toe Loop！
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 6: SALCHOW ==================== -->
+    <section class="slide" id="slide-6">
+      <div class="slide-header">
+        <span class="slide-eyebrow">跳躍精講 2 / 6・刀刃跳</span>
+        <h2 class="slide-title">後內結環跳 Salchow (S)</h2>
+        <p class="slide-subtitle">十屆世界冠軍 Ulrich Salchow 傳奇之作，標誌性的「內八字掃腿」起跳。</p>
+      </div>
+
+      <div class="two-col">
+        <!-- 影片播放器卡片 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <video id="video-salchow" autoplay loop muted playsinline src="videos/salchow.mp4"></video>
+          </div>
+          <div class="video-controls-bar">
+            <button class="video-btn" onclick="togglePlay('video-salchow', this)">⏸️ 暫停</button>
+            <button class="video-btn" onclick="toggleSlow('video-salchow', this)">🐢 0.5x 慢速</button>
+            <span class="video-tag">示範：羽生結弦 4S</span>
+          </div>
+        </div>
+
+        <!-- 解說卡片 -->
+        <div>
+          <div class="info-pill-group">
+            <span class="pill pill-green">難度：★☆☆☆</span>
+            <span class="pill pill-blue">縮寫：S</span>
+            <span class="pill pill-yellow">發明者：Ulrich Salchow (1909)</span>
+          </div>
+
+          <div class="card-sketch">
+            <h4>⛸️ 起跳與落冰機制（逆時針）</h4>
+            <p style="font-size: 0.92rem; color: var(--slate); line-height: 1.7;">
+              • <strong>起跳足與刃</strong>：<strong>左腳後內刃（LBI）</strong>直接起跳，不點冰。<br>
+              • <strong>落冰足與刃</strong>：<strong>右腳後外刃（RBO）</strong>。<br>
+              • <strong>進入步法</strong>：常由前外轉三步（3-turn）或莫霍克步進入倒滑內刃。
+            </p>
+          </div>
+
+          <div class="card-sketch">
+            <h4>👀 核心視覺記憶點：雙腳「內八字平行」</h4>
+            <p style="font-size: 0.9rem; color: var(--slate); line-height: 1.6;">
+              起跳瞬間，雙腿微彎呈現寬八字形（膝蓋向內微扣）。<strong>兩腳完全不交叉</strong>，兩腳連線與雙肩保持平行！浮足（右腳）在側後方像圓規一樣畫出一道巨大的「掃腿弧線（Sweep）」，帶動全身角動量拔地而起。
+            </p>
+          </div>
+
+          <!-- 手繪風俯視站姿圖 SVG -->
+          <div class="svg-illustration">
+            <svg viewBox="0 0 360 100" xmlns="http://www.w3.org/2000/svg">
+              <text x="180" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#0369a1">Salchow 俯視起跳站姿：雙腳內八・與肩平行</text>
+              <!-- 雙肩參考線 -->
+              <line x1="80" y1="36" x2="280" y2="36" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4"/>
+              <text x="290" y="40" font-size="11" fill="#64748b">肩線</text>
+              <!-- 左腳（後內刃） -->
+              <g transform="translate(130, 68) rotate(25)">
+                <ellipse cx="0" cy="0" rx="9" ry="22" fill="#bae6fd" stroke="#0284c7" stroke-width="2"/>
+                <text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#0369a1">左腳(刃)</text>
+              </g>
+              <!-- 右腳（掃腿浮足） -->
+              <g transform="translate(230, 68) rotate(-25)">
+                <ellipse cx="0" cy="0" rx="9" ry="22" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+                <text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#15803d">右腳(浮)</text>
+              </g>
+              <!-- 掃腿動態箭頭 -->
+              <path d="M 245 85 Q 260 55 230 40" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow)"/>
+              <text x="180" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#b91c1c">內八字開立，兩腳不交叉！</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 7: LOOP ==================== -->
+    <section class="slide" id="slide-7">
+      <div class="slide-header">
+        <span class="slide-eyebrow">跳躍精講 3 / 6・刀刃跳</span>
+        <h2 class="slide-title">後外結環跳 Loop (Lo)</h2>
+        <p class="slide-subtitle">Werner Rittberger 首創，如緊繃彈簧般同腳起跳、同腳落冰。</p>
+      </div>
+
+      <div class="two-col">
+        <!-- 影片播放器卡片 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <video id="video-loop" autoplay loop muted playsinline src="videos/loop.mp4"></video>
+          </div>
+          <div class="video-controls-bar">
+            <button class="video-btn" onclick="togglePlay('video-loop', this)">⏸️ 暫停</button>
+            <button class="video-btn" onclick="toggleSlow('video-loop', this)">🐢 0.5x 慢速</button>
+            <span class="video-tag">示範：羽生結弦 4Lo</span>
+          </div>
+        </div>
+
+        <!-- 解說卡片 -->
+        <div>
+          <div class="info-pill-group">
+            <span class="pill pill-yellow">難度：★★☆☆</span>
+            <span class="pill pill-blue">縮寫：Lo (德語稱 Rittberger)</span>
+            <span class="pill pill-yellow">發明者：Werner Rittberger (1910)</span>
+          </div>
+
+          <div class="card-sketch">
+            <h4>⛸️ 起跳與落冰機制（逆時針）</h4>
+            <p style="font-size: 0.92rem; color: var(--slate); line-height: 1.7;">
+              • <strong>起跳足與刃</strong>：<strong>右腳後外刃（RBO）</strong>，完全不點冰！<br>
+              • <strong>落冰足與刃</strong>：<strong>右腳後外刃（RBO）</strong>（完全原腳起落！）。<br>
+              • <strong>力學特色</strong>：純靠右腿深蹲下壓後外刃的向心力直接彈起，身體如壓縮彈簧。
+            </p>
+          </div>
+
+          <div class="card-sketch">
+            <h4>👀 核心視覺記憶點：雙腳「X 型交叉與肩垂直」</h4>
+            <p style="font-size: 0.9rem; color: var(--slate); line-height: 1.6;">
+              起跳準備時，左腳會收在右腳正前方，<strong>雙腳形成前後微交叉的 X 字形</strong>！兩腳連線與雙肩方向呈垂直狀態（與 Salchow 的平行完全相反）。
+            </p>
+          </div>
+
+          <!-- 查核勘誤註記徽章 -->
+          <div class="verify-badge">
+            ⚠️ <strong>動圖勘誤叮嚀：</strong>示範影片字幕標記 `LEFT FOOT...` 為筆誤！羽生為逆時針選手，真正承重起跳的起跳足是<strong>右腳後外刃</strong>，左腳僅在前方導向。
+          </div>
+
+          <!-- 手繪風俯視站姿圖 SVG -->
+          <div class="svg-illustration" style="margin-top: 12px;">
+            <svg viewBox="0 0 360 95" xmlns="http://www.w3.org/2000/svg">
+              <text x="180" y="16" text-anchor="middle" font-size="12" font-weight="700" fill="#0369a1">Loop 俯視起跳站姿：雙腳 X 交叉・與肩垂直</text>
+              <!-- 雙肩參考線 -->
+              <line x1="80" y1="30" x2="280" y2="30" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4"/>
+              <text x="290" y="34" font-size="11" fill="#64748b">肩線</text>
+              <!-- 前腳（左腳導向） -->
+              <g transform="translate(180, 48) rotate(10)">
+                <ellipse cx="0" cy="0" rx="8" ry="18" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+                <text x="0" y="4" text-anchor="middle" font-size="9" font-weight="700" fill="#15803d">左腳(前)</text>
+              </g>
+              <!-- 後腳（右腳起跳刃） -->
+              <g transform="translate(180, 78) rotate(-10)">
+                <ellipse cx="0" cy="0" rx="8" ry="18" fill="#bae6fd" stroke="#0284c7" stroke-width="2"/>
+                <text x="0" y="4" text-anchor="middle" font-size="9" font-weight="700" fill="#0369a1">右腳(後外)</text>
+              </g>
+              <!-- 垂直交叉虛線 -->
+              <line x1="180" y1="35" x2="180" y2="90" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="2,2"/>
+              <text x="235" y="65" font-size="11" font-weight="600" fill="#0369a1">前後交叉・與肩垂直</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 8: FLIP ==================== -->
+    <section class="slide" id="slide-8">
+      <div class="slide-header">
+        <span class="slide-eyebrow">跳躍精講 4 / 6・點冰跳</span>
+        <h2 class="slide-title">後內點冰跳 Flip (F)</h2>
+        <p class="slide-subtitle">急促步法進入、順向壓內刃點冰，看清腳踝內扣是識別核心。</p>
+      </div>
+
+      <div class="two-col">
+        <!-- 影片播放器卡片 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <video id="video-flip" autoplay loop muted playsinline src="videos/flip.mp4"></video>
+          </div>
+          <div class="video-controls-bar">
+            <button class="video-btn" onclick="togglePlay('video-flip', this)">⏸️ 暫停</button>
+            <button class="video-btn" onclick="toggleSlow('video-flip', this)">🐢 0.5x 慢速</button>
+            <span class="video-tag">示範：羽生結弦 3F / 4F</span>
+          </div>
+        </div>
+
+        <!-- 解說卡片 -->
+        <div>
+          <div class="info-pill-group">
+            <span class="pill pill-yellow">難度：★★☆☆</span>
+            <span class="pill pill-blue">縮寫：F</span>
+            <span class="pill pill-purple">進入步法：轉三 (3-turn) / 莫霍克</span>
+          </div>
+
+          <div class="card-sketch">
+            <h4>⛸️ 起跳與落冰機制（逆時針）</h4>
+            <p style="font-size: 0.92rem; color: var(--slate); line-height: 1.7;">
+              • <strong>起跳足與刃</strong>：<strong>左腳後內刃（LBI）</strong>滑行，腳踝向內扣。<br>
+              • <strong>點冰足</strong>：<strong>右腳刀齒（Right Toe Pick）</strong>敲冰。<br>
+              • <strong>落冰足與刃</strong>：<strong>右腳後外刃（RBO）</strong>。
+            </p>
+          </div>
+
+          <div class="card-sketch">
+            <h4>👀 核心視覺記憶點：順向滑行與急促轉三步</h4>
+            <p style="font-size: 0.9rem; color: var(--slate); line-height: 1.6;">
+              Flip 很少從長距離直線直接滑入，通常選手會先向前滑行，接著以迅速的「轉三步（3-turn）」或莫霍克步轉身進入倒滑，隨後立即起跳。選手進入跳躍的滑行圓弧方向，與起跳後的旋轉方向是<strong>完全順向一致</strong>的。
+            </p>
+          </div>
+
+          <div class="card-sketch" style="background: #fef2f2; border-color: #fecaca;">
+            <h4 style="color: #b91c1c;">⚠️ 常見失誤：錯刃 Lip</h4>
+            <p style="font-size: 0.88rem; color: #991b1b; line-height: 1.5;">
+              起跳瞬間如果未能深壓內刃，冰刀倒向外刃，就會被技術裁判亮黃牌或扣分（記為 <code>!</code> 用刃不清或 <code>e</code> 錯刃），這種把 Flip 跳成 Lutz 的瑕疵俗稱「Lip」。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 9: LUTZ ==================== -->
+    <section class="slide" id="slide-9">
+      <div class="slide-header">
+        <span class="slide-eyebrow">跳躍精講 5 / 6・點冰跳</span>
+        <h2 class="slide-title">勾手跳 Lutz (Lz)</h2>
+        <p class="slide-subtitle">長弧線反 S 進入、對抗反向扭矩的力學傑作，高分爭金必備殺器！</p>
+      </div>
+
+      <div class="two-col">
+        <!-- 影片播放器卡片 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <video id="video-lutz" autoplay loop muted playsinline src="videos/lutz.mp4"></video>
+          </div>
+          <div class="video-controls-bar">
+            <button class="video-btn" onclick="togglePlay('video-lutz', this)">⏸️ 暫停</button>
+            <button class="video-btn" onclick="toggleSlow('video-lutz', this)">🐢 0.5x 慢速</button>
+            <span class="video-tag">示範：羽生結弦 4Lz</span>
+          </div>
+        </div>
+
+        <!-- 解說卡片 -->
+        <div>
+          <div class="info-pill-group">
+            <span class="pill pill-orange">難度：★★★☆</span>
+            <span class="pill pill-blue">縮寫：Lz</span>
+            <span class="pill pill-yellow">發明者：Alois Lutz (1913)</span>
+          </div>
+
+          <div class="card-sketch">
+            <h4>⛸️ 起跳與落冰機制（逆時針）</h4>
+            <p style="font-size: 0.92rem; color: var(--slate); line-height: 1.7;">
+              • <strong>起跳足與刃</strong>：<strong>左腳深壓後外刃（LBO）</strong>長滑行。<br>
+              • <strong>點冰足</strong>：<strong>右腳刀齒（Right Toe Pick）</strong>深扎冰面。<br>
+              • <strong>落冰足與刃</strong>：<strong>右腳後外刃（RBO）</strong>。
+            </p>
+          </div>
+
+          <div class="card-sketch">
+            <h4>👀 核心視覺記憶點：經典「反 S 進入軌跡」</h4>
+            <p style="font-size: 0.9rem; color: var(--slate); line-height: 1.6;">
+              選手常從冰場邊緣拉出長長的後外刃弧線進入。<strong>滑行弧度的向心方向與逆時針旋轉方向剛好相反（Counter-rotation）</strong>，在冰面上會留下像反 S 形的滑行印記。選手必須靠強壯的核心背肌扭轉克服反向扭矩！
+            </p>
+          </div>
+
+          <!-- 反 S 弧線 SVG 示意圖 -->
+          <div class="svg-illustration">
+            <svg viewBox="0 0 380 95" xmlns="http://www.w3.org/2000/svg">
+              <text x="190" y="15" text-anchor="middle" font-size="12" font-weight="700" fill="#c2410c">Lutz 反 S 軌跡與反向扭矩矛盾</text>
+              <!-- 滑行弧線 -->
+              <path d="M 30 75 Q 120 20 220 65" fill="none" stroke="#ea580c" stroke-width="3"/>
+              <text x="75" y="40" font-size="11" font-weight="600" fill="#c2410c">左腳深後外刃長弧線</text>
+              <!-- 起跳點 -->
+              <circle cx="220" cy="65" r="5" fill="#ea580c"/>
+              <text x="210" y="86" font-size="10" font-weight="700" fill="#9a3412">點冰起跳點</text>
+              <!-- 反向空中旋轉箭頭 -->
+              <path d="M 230 65 Q 260 20 300 35 T 340 70" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-dasharray="3,3"/>
+              <text x="310" y="30" font-size="11" font-weight="700" fill="#0284c7">反向向左空轉 ↺</text>
+            </svg>
+          </div>
+
+          <div class="card-sketch" style="background: #fff7ed; border-color: #ffedd5;">
+            <h4 style="color: #c2410c;">⚠️ 知名爭議點：錯刃 Flutz</h4>
+            <p style="font-size: 0.88rem; color: #9a3412; line-height: 1.5;">
+              若選手起跳瞬間無法扛住反向扭矩，左腳外刃偷偷倒向內刃，就變成了 Flip 的起跳刃，稱為「Flutz」，裁判會標記 <code>e</code> 嚴厲扣分。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 10: AXEL ==================== -->
+    <section class="slide" id="slide-10">
+      <div class="slide-header">
+        <span class="slide-eyebrow">跳躍精講 6 / 6・刀刃跳之王</span>
+        <h2 class="slide-title">阿克塞爾跳 Axel (A)</h2>
+        <p class="slide-subtitle">六大跳躍唯一的「正向起跳」，天生多轉半周的人體極限挑戰！</p>
+      </div>
+
+      <div class="two-col">
+        <!-- 影片播放器卡片 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <video id="video-axel" autoplay loop muted playsinline src="videos/axel.mp4"></video>
+          </div>
+          <div class="video-controls-bar">
+            <button class="video-btn" onclick="togglePlay('video-axel', this)">⏸️ 暫停</button>
+            <button class="video-btn" onclick="toggleSlow('video-axel', this)">🐢 0.5x 慢速</button>
+            <span class="video-tag">示範：羽生結弦 3A</span>
+          </div>
+        </div>
+
+        <!-- 解說卡片 -->
+        <div>
+          <div class="info-pill-group">
+            <span class="pill pill-orange">難度：★★★★ (最高)</span>
+            <span class="pill pill-blue">縮寫：A</span>
+            <span class="pill pill-yellow">發明者：Axel Paulsen (1882)</span>
+          </div>
+
+          <div class="card-sketch">
+            <h4>⛸️ 起跳與落冰機制（逆時針）</h4>
+            <p style="font-size: 0.92rem; color: var(--slate); line-height: 1.7;">
+              • <strong>起跳足與刃</strong>：<strong>左腳前外刃（LFO）</strong>向前滑行躍起，不點冰！<br>
+              • <strong>落冰足與刃</strong>：<strong>右腳後外刃（RBO）</strong>（倒向落冰）。<br>
+              • <strong>歷史意義</strong>：現代花滑六大跳中<strong>歷史最悠久</strong>的一種。
+            </p>
+          </div>
+
+          <div class="card-sketch">
+            <h4>👑 為什麼 Axel 難度傲視群雄？多轉 180 度！</h4>
+            <p style="font-size: 0.9rem; color: var(--slate); line-height: 1.6;">
+              因為是唯一面向前方起跳的跳躍，但落冰必須背向倒滑，因此<strong>每種周數在空中都比其他跳多出半圈（+180°）</strong>：
+            </p>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+              <span class="pill pill-blue">1A = 1.5 圈 (540°)</span>
+              <span class="pill pill-yellow">2A = 2.5 圈 (900°)</span>
+              <span class="pill pill-orange">3A = 3.5 圈 (1260°)</span>
+              <span class="pill pill-purple">4A = 4.5 圈 (1620°)</span>
+            </div>
+          </div>
+
+          <!-- Axel 540度多轉半圈角度盤 SVG -->
+          <div class="svg-illustration">
+            <svg viewBox="0 0 380 100" xmlns="http://www.w3.org/2000/svg">
+              <text x="190" y="16" text-anchor="middle" font-size="12" font-weight="700" fill="#0369a1">Axel 轉體度數：向前起跳 0° $\rightarrow$ 空中轉 540° $\rightarrow$ 倒向落冰 180°</text>
+              <!-- 角度圓盤 -->
+              <g transform="translate(190, 58)">
+                <circle cx="0" cy="0" r="32" fill="#f0f9ff" stroke="#bae6fd" stroke-width="2"/>
+                <!-- 起跳箭頭（向前 12點鐘） -->
+                <line x1="0" y1="0" x2="0" y2="-28" stroke="#16a34a" stroke-width="3" marker-end="url(#arrow)"/>
+                <text x="6" y="-18" font-size="10" font-weight="700" fill="#15803d">正向起跳 (0°)</text>
+                <!-- 旋轉螺旋線（轉 1.5 圈） -->
+                <path d="M 0 -22 A 22 22 0 1 1 -18 10 A 14 14 0 1 1 0 14" fill="none" stroke="#0284c7" stroke-width="2.5"/>
+                <!-- 落冰箭頭（倒向 6點鐘） -->
+                <line x1="0" y1="0" x2="0" y2="28" stroke="#ef4444" stroke-width="3" marker-end="url(#arrow)"/>
+                <text x="6" y="24" font-size="10" font-weight="700" fill="#b91c1c">倒向落冰 (180°)</text>
+              </g>
+              <text x="70" y="62" font-size="11" font-weight="600" fill="#64748b">一般跳：轉整數圈 (360°n)<br>落冰方向與起跳同</text>
+              <text x="310" y="62" font-size="11" font-weight="700" fill="#0369a1">Axel：轉 (360°n + 180°)<br>天生多轉半圈！</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 11: 比賽轉播與小分表 ==================== -->
+    <section class="slide" id="slide-11">
+      <div class="slide-header">
+        <span class="slide-eyebrow">規則與計分機制</span>
+        <h2 class="slide-title">看懂比賽轉播與小分表：基礎分與神秘符號</h2>
+        <p class="slide-subtitle">電視畫面上出現 4Lz+3T 或跳躍旁的小字母代表什麼？裁判評分標準全公開。</p>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 12px;">📊 ISU 官方跳躍基礎分值表（BV, 最新新規）</h3>
+          <div style="background: white; border: 1.5px solid #cbd5e1; border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: center;">
+              <thead>
+                <tr style="background: #f1f5f9; color: var(--slate); font-weight: 700; border-bottom: 2px solid #cbd5e1;">
+                  <th style="padding: 8px 6px;">跳躍名稱</th>
+                  <th style="padding: 8px 6px;">代碼</th>
+                  <th style="padding: 8px 6px;">單周 (1)</th>
+                  <th style="padding: 8px 6px;">兩周 (2)</th>
+                  <th style="padding: 8px 6px;">三周 (3)</th>
+                  <th style="padding: 8px 6px; background: #e0f2fe; color: #0369a1;">四周 (4)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid #f1f5f9;">
+                  <td style="padding: 8px 6px; font-weight: 600;">後外點冰 (Toe Loop)</td>
+                  <td style="padding: 8px 6px;">T</td>
+                  <td>0.40</td>
+                  <td>1.30</td>
+                  <td>4.20</td>
+                  <td style="font-weight: 700; color: #0284c7;">9.50</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #f1f5f9;">
+                  <td style="padding: 8px 6px; font-weight: 600;">後內結環 (Salchow)</td>
+                  <td style="padding: 8px 6px;">S</td>
+                  <td>0.40</td>
+                  <td>1.30</td>
+                  <td>4.30</td>
+                  <td style="font-weight: 700; color: #0284c7;">9.70</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #f1f5f9;">
+                  <td style="padding: 8px 6px; font-weight: 600;">後外結環 (Loop)</td>
+                  <td style="padding: 8px 6px;">Lo</td>
+                  <td>0.50</td>
+                  <td>1.70</td>
+                  <td>4.90</td>
+                  <td style="font-weight: 700; color: #0284c7;">10.50</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #f1f5f9;">
+                  <td style="padding: 8px 6px; font-weight: 600;">後內點冰 (Flip)</td>
+                  <td style="padding: 8px 6px;">F</td>
+                  <td>0.50</td>
+                  <td>1.80</td>
+                  <td>5.30</td>
+                  <td style="font-weight: 700; color: #0284c7;">11.00</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #f1f5f9;">
+                  <td style="padding: 8px 6px; font-weight: 600;">勾手跳 (Lutz)</td>
+                  <td style="padding: 8px 6px;">Lz</td>
+                  <td>0.60</td>
+                  <td>2.10</td>
+                  <td>5.90</td>
+                  <td style="font-weight: 700; color: #0284c7;">11.50</td>
+                </tr>
+                <tr style="background: #fffbeb;">
+                  <td style="padding: 8px 6px; font-weight: 800; color: #b45309;">阿克塞爾 (Axel)</td>
+                  <td style="padding: 8px 6px; font-weight: 800; color: #b45309;">A</td>
+                  <td style="font-weight: 700;">1.10</td>
+                  <td style="font-weight: 700;">3.30</td>
+                  <td style="font-weight: 700; color: #d97706;">8.00</td>
+                  <td style="font-weight: 800; color: #b45309; background: #fef3c7;">12.50 👑</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div style="margin-top: 14px; font-size: 0.85rem; color: var(--slate);">
+            💡 <strong>GOE 執行分機制（-5 至 +5 分）</strong>：每個級距代表基礎分的 $10\%$。若起跳高遠、落冰流暢、貼合音樂，最多可多拿 $50\%$ 的額外獎勵分！
+          </div>
+        </div>
+
+        <div>
+          <h3 style="font-size: 1.15rem; color: var(--navy); margin-bottom: 12px;">🔍 裁判小分表（Protocol）神祕記號解碼</h3>
+
+          <div class="card-sketch" style="padding: 12px 16px; margin-bottom: 10px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="pill pill-yellow" style="font-size: 0.9rem;">q</span>
+              <strong>剛好差 1/4 圈（Landed on quarter）</strong>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--slate); margin-top: 4px;">
+              基礎分值不變，但裁判會在 GOE 給予負分扣分評價。
+            </p>
+          </div>
+
+          <div class="card-sketch" style="padding: 12px 16px; margin-bottom: 10px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="pill pill-orange" style="font-size: 0.9rem;">&lt;</span>
+              <strong>周數不足（Under-rotated，存周）</strong>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--slate); margin-top: 4px;">
+              空中轉體缺少 1/4 到 1/2 圈。<strong>基礎分直接打折（拿原本 70%~80%）</strong>且 GOE 大扣。
+            </p>
+          </div>
+
+          <div class="card-sketch" style="padding: 12px 16px; margin-bottom: 10px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="pill" style="background: #fee2e2; color: #b91c1c; font-size: 0.9rem;">&lt;&lt;</span>
+              <strong>降級降組（Downgraded）</strong>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--slate); margin-top: 4px;">
+              缺少超過 1/2 圈。基礎分直接被降為少一圈的跳躍（例如 4T 變 3T 計算）！
+            </p>
+          </div>
+
+          <div class="card-sketch" style="padding: 12px 16px; margin-bottom: 10px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="pill" style="background: #fdf2f8; color: #9d174d; font-size: 0.9rem;">e / !</span>
+              <strong>用刃問題（錯刃 e / 警告 !）</strong>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--slate); margin-top: 4px;">
+              專門用於 Flip 與 Lutz。<code>e</code> 為嚴重錯刃（基礎分打折＋扣 GOE）；<code>!</code> 為用刃不清警告。
+            </p>
+          </div>
+
+          <div class="card-sketch" style="padding: 12px 16px; margin-bottom: 0;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="pill pill-purple" style="font-size: 0.9rem;">×</span>
+              <strong>後半段加乘獎勵（$1.1\times$ Bonus）</strong>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--slate); margin-top: 4px;">
+              短曲最後 1 組、長曲最後 3 組跳躍享有 1.1 倍基礎分加成，獎勵體力分配。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 12: 連跳與互動測驗 ==================== -->
+    <section class="slide" id="slide-12">
+      <div class="slide-header">
+        <span class="slide-eyebrow">進階觀念與實戰測驗</span>
+        <h2 class="slide-title">連跳小補帖 ＆ 現學現賣互動小測驗</h2>
+        <p class="slide-subtitle">測試一下你剛學會的跳躍識別本領！點擊選項即可獲得即時詳解。</p>
+      </div>
+
+      <!-- 上半部：連跳進階觀念小卡 -->
+      <div style="background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: var(--radius-md); padding: 14px 20px; margin-bottom: 24px;">
+        <h4 style="color: #166534; font-size: 1rem; margin-bottom: 6px;">⛸️ 連跳小補帖：Combo vs. Sequence</h4>
+        <p style="font-size: 0.88rem; color: #14532d; line-height: 1.6;">
+          • <strong>聯合跳躍（Combination, +）</strong>：前跳落冰腳必須直接成為後跳起跳腳（最常接 <code>+3T</code> 或 <code>+3Lo</code>）。若想接 Salchow，中間會插入轉一圈的 <strong>Euler（歐勒跳, 1Eu）</strong> 換腳！<br>
+          • <strong>連續跳躍（Sequence, +SEQ）</strong>：最新規定只要第二跳帶有 <strong>Axel 步法</strong>（如 <code>4T+3A+SEQ</code>），就能拿滿 $100\%$ 的完整跳躍基礎分！
+        </p>
+      </div>
+
+      <!-- 下半部：3 題互動測驗 -->
+      <div id="quizContainer">
+        <!-- 題目 1 -->
+        <div class="quiz-card" id="q1">
+          <div class="quiz-q-title">
+            <span>❓ 第 1 題：</span>
+            <span>選手背對前進方向倒滑，起跳時另一隻腳「沒有點冰」，起跳前雙腳呈現寬寬的「內八字」且與肩線平行，隨後右腿在側後方大弧度掃腿拔起。請問這是哪一種跳躍？</span>
+          </div>
+          <div class="quiz-options">
+            <button class="quiz-opt-btn" onclick="checkAnswer(1, 'A', true, this)">A. 後內結環跳 (Salchow)</button>
+            <button class="quiz-opt-btn" onclick="checkAnswer(1, 'B', false, this)">B. 後外結環跳 (Loop)</button>
+            <button class="quiz-opt-btn" onclick="checkAnswer(1, 'C', false, this)">C. 後內點冰跳 (Flip)</button>
+            <button class="quiz-opt-btn" onclick="checkAnswer(1, 'D', false, this)">D. 後外點冰跳 (Toe Loop)</button>
+          </div>
+          <div class="quiz-feedback" id="q1-feedback"></div>
+        </div>
+
+        <!-- 題目 2 -->
+        <div class="quiz-card" id="q2">
+          <div class="quiz-q-title">
+            <span>❓ 第 2 題：</span>
+            <span>在奧運轉播中，選手向前大步滑行、面向前方直接躍起，轉播員驚呼「好漂亮的三周半！」。請問他在空中實際旋轉了多少度？</span>
+          </div>
+          <div class="quiz-options">
+            <button class="quiz-opt-btn" onclick="checkAnswer(2, 'A', false, this)">A. 1080 度（整整 3 圈）</button>
+            <button class="quiz-opt-btn" onclick="checkAnswer(2, 'B', true, this)">B. 1260 度（3.5 圈）</button>
+            <button class="quiz-opt-btn" onclick="checkAnswer(2, 'C', false, this)">C. 1440 度（整整 4 圈）</button>
+            <button class="quiz-opt-btn" onclick="checkAnswer(2, 'D', false, this)">D. 900 度（2.5 圈）</button>
+          </div>
+          <div class="quiz-feedback" id="q2-feedback"></div>
+        </div>
+
+        <!-- 題目 3 -->
+        <div class="quiz-card" id="q3">
+          <div class="quiz-q-title">
+            <span>❓ 第 3 題：</span>
+            <span>某逆時針選手執行跳躍時，拉出長長的外刃弧線進入，但起跳瞬間冰刀未能咬住外刃，反而不由自主地向內倒成了「內刃」，接著右腳點冰起跳。請問裁判小分表最可能會標註什麼符號？</span>
+          </div>
+          <div class="quiz-options">
+            <button class="quiz-opt-btn" onclick="checkAnswer(3, 'A', false, this)">A. q（欠 1/4 圈）</button>
+            <button class="quiz-opt-btn" onclick="checkAnswer(3, 'B', true, this)">B. e 或 !（錯刃 Flutz / 警告）</button>
+            <button class="quiz-opt-btn" onclick="checkAnswer(3, 'C', false, this)">C. &lt;&lt;（降組）</button>
+            <button class="quiz-opt-btn" onclick="checkAnswer(3, 'D', false, this)">D. ×（後半段加成）</button>
+          </div>
+          <div class="quiz-feedback" id="q3-feedback"></div>
+        </div>
+      </div>
+
+      <!-- 測驗得分看板 -->
+      <div id="quizScoreBoard" style="display: none; text-align: center; background: #e0f2fe; border: 2px solid #38bdf8; border-radius: var(--radius-md); padding: 18px; margin-top: 14px;">
+        <h3 style="color: #0369a1; font-size: 1.25rem; margin-bottom: 6px;">🎉 測驗完成！你的花滑新手檢定成績</h3>
+        <p id="scoreText" style="font-size: 1.1rem; font-weight: 700; color: #0c4a6e;"></p>
+        <p style="font-size: 0.88rem; color: #475569; margin-top: 4px;">恭喜你掌握了花式滑冰六大跳躍的核心視覺特徵與規則！下次看冬季奧運或世錦賽轉播時，你也能當專業冰迷！</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Navigation Bar -->
+  <footer class="bottom-nav">
+    <button class="nav-btn nav-btn-secondary" id="prevBtn" onclick="changeSlide(-1)">
+      ← 上一頁
+    </button>
+
+    <div class="keyboard-hint">
+      <span>可用鍵盤</span>
+      <span class="key-badge">←</span>
+      <span class="key-badge">→</span>
+      <span>切換投影片</span>
+    </div>
+
+    <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">
+      下一頁 →
+    </button>
+  </footer>
+
+  <!-- JavaScript Interaction Logic -->
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 12;
+
+    // 更新投影片與進度條
+    function showSlide(slideIndex) {
+      if (slideIndex < 1) slideIndex = 1;
+      if (slideIndex > totalSlides) slideIndex = totalSlides;
+      currentSlide = slideIndex;
+
+      document.querySelectorAll('.slide').forEach((slide, idx) => {
+        slide.classList.toggle('active', (idx + 1) === currentSlide);
+      });
+
+      // 更新進度條
+      const progressPercent = (currentSlide / totalSlides) * 100;
+      document.getElementById('progressBar').style.width = progressPercent + '%';
+
+      // 更新頁碼
+      document.getElementById('pageCounter').textContent = `Slide ${currentSlide} / ${totalSlides}`;
+
+      // 按鈕可用狀態
+      document.getElementById('prevBtn').disabled = (currentSlide === 1);
+      const nextBtn = document.getElementById('nextBtn');
+      if (currentSlide === totalSlides) {
+        nextBtn.textContent = '完成瀏覽 🏆';
+      } else {
+        nextBtn.textContent = '下一頁 →';
+      }
+
+      // 當切換到有影片的頁面時，確保影片正常播放
+      const activeSlide = document.getElementById(`slide-${currentSlide}`);
+      const video = activeSlide.querySelector('video');
+      if (video) {
+        video.play().catch(() => {});
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function changeSlide(direction) {
+      showSlide(currentSlide + direction);
+    }
+
+    // 鍵盤左右方向鍵切換
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+        if (currentSlide < totalSlides) {
+          e.preventDefault();
+          changeSlide(1);
+        }
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        if (currentSlide > 1) {
+          e.preventDefault();
+          changeSlide(-1);
+        }
+      }
+    });
+
+    // 影片控制功能（播放/暫停）
+    function togglePlay(videoId, btn) {
+      const vid = document.getElementById(videoId);
+      if (!vid) return;
+      if (vid.paused) {
+        vid.play();
+        btn.textContent = '⏸️ 暫停';
+        btn.classList.remove('active');
+      } else {
+        vid.pause();
+        btn.textContent = '▶️ 播放';
+        btn.classList.add('active');
+      }
+    }
+
+    // 影片 0.5x 慢速播放切換
+    function toggleSlow(videoId, btn) {
+      const vid = document.getElementById(videoId);
+      if (!vid) return;
+      if (vid.playbackRate === 1.0) {
+        vid.playbackRate = 0.5;
+        btn.textContent = '⚡ 1.0x 正常速';
+        btn.classList.add('active');
+      } else {
+        vid.playbackRate = 1.0;
+        btn.textContent = '🐢 0.5x 慢速';
+        btn.classList.remove('active');
+      }
+    }
+
+    // 互動小測驗邏輯
+    let quizState = { 1: null, 2: null, 3: null };
+    const explanations = {
+      1: {
+        correct: "🎉 完全正確！不點冰（刀刃跳）、背向進入、起跳前雙腳內八字平行且不交叉、伴隨大幅度掃腿，正是後內結環跳（Salchow, S）的招牌特徵！",
+        wrong: "❌ 不太對喔！Loop 雙腳是前後 X 交叉；Flip 與 Toe Loop 是有點冰的點冰跳。雙腳內八字且平行掃腿拔起的正是 Salchow！"
+      },
+      2: {
+        correct: "🎉 答對了！三周半阿克塞爾（3A）是唯一的正滑起跳跳躍，落冰必須倒向，因此每跳天生多轉半圈（180度）。三周半實際在空中旋轉了 1260 度（3.5 圈）！",
+        wrong: "❌ 注意 Axel 的特例！一般跳躍的三周是 1080 度（3 圈），但 Axel 正滑起跳倒滑落冰多出半圈，因此 3A 實際轉了 3.5 圈 = 1260 度！"
+      },
+      3: {
+        correct: "🎉 慧眼獨具！Lutz（勾手跳）規範必須是外刃起跳，若起跳瞬間冰刀向內倒變成內刃，就犯了經典的「錯刃 Flutz」瑕疵，裁判會在小分表標記『e』扣分或『!』警告！",
+        wrong: "❌ 用刃問題只出現在 Lutz 和 Flip！當原本應該用外刃的 Lutz 倒成內刃起跳時，稱為錯刃（Flutz），裁判會註記符號『e』或『!』。"
+      }
+    };
+
+    function checkAnswer(qNum, selectedOption, isCorrect, btnElement) {
+      const parentCard = document.getElementById(`q${qNum}`);
+      const buttons = parentCard.querySelectorAll('.quiz-opt-btn');
+      buttons.forEach(b => {
+        b.disabled = true;
+      });
+
+      if (isCorrect) {
+        btnElement.classList.add('correct');
+        quizState[qNum] = true;
+      } else {
+        btnElement.classList.add('wrong');
+        quizState[qNum] = false;
+        // 標記出正確選項
+        buttons.forEach(b => {
+          if (b.textContent.startsWith(getCorrectLetter(qNum))) {
+            b.classList.add('correct');
+          }
+        });
+      }
+
+      // 顯示解析
+      const feedbackBox = document.getElementById(`q${qNum}-feedback`);
+      feedbackBox.className = 'quiz-feedback show ' + (isCorrect ? 'correct-box' : 'wrong-box');
+      feedbackBox.textContent = isCorrect ? explanations[qNum].correct : explanations[qNum].wrong;
+
+      // 檢查是否 3 題都回答完畢
+      if (quizState[1] !== null && quizState[2] !== null && quizState[3] !== null) {
+        let correctCount = Object.values(quizState).filter(v => v === true).length;
+        const scoreBoard = document.getElementById('quizScoreBoard');
+        const scoreText = document.getElementById('scoreText');
+        scoreBoard.style.display = 'block';
+        scoreText.textContent = `得分：${correctCount} / 3 題 (${Math.round((correctCount/3)*100)} 分)`;
+        scoreBoard.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function getCorrectLetter(qNum) {
+      if (qNum === 1) return 'A.';
+      if (qNum === 2) return 'B.';
+      if (qNum === 3) return 'B.';
+      return '';
+    }
+
+    // 初始化顯示第 1 頁
+    showSlide(1);
+  </script>
+</body>
+</html>
